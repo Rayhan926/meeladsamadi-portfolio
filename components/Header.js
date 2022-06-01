@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <header className="absolute top-0 left-0 w-full z-[5] pt-5">
+    <header className="lg:absolute top-0 left-0 w-full z-[5] pt-5">
       <div className="container flex justify-between items-center">
         <Link href="/">
           <a className="text-[40px] font-bold italic leading-[32px]">

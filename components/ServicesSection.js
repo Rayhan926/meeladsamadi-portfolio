@@ -29,7 +29,7 @@ const servicesCards = [
 
 const ServicesSection = () => {
   return (
-    <section>
+    <section id="services" className="pt-[100px] pb-[50px]">
       <SectionTitleSubtitle
         title={"My Services"}
         subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quasi tempore atque, natus ex ut voluptate eaque reiciendis sapiente! Eaque!"
@@ -50,7 +50,9 @@ const ServicesSection = () => {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button>Hire Me</Button>
+          <a href="#hire-me">
+            <Button>Hire Me</Button>
+          </a>
         </div>
       </div>
     </section>

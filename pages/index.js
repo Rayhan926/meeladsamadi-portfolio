@@ -5,7 +5,20 @@ import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import PortfolioSection from "../components/PortfolioSection";
 import ServicesSection from "../components/ServicesSection";
+import { useEffect } from "react";
+import axios from "axios";
 export default function Home() {
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:3000/api/contact", {
+  //       email: "rayhanbd7075@gmail.com",
+  //     })
+  //     .then((res) => {
+  //       alert("Send Mail To You");
+  //     })
+  //     .catch((e) => console.log(e));
+  // }, []);
+
   return (
     <>
       <Head>
@@ -14,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header /> */}
+      <Header />
       <HeroSection />
       <ServicesSection />
       <PortfolioSection />

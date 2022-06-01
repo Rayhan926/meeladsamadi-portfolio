@@ -12,7 +12,8 @@ module.exports = {
         "dark-soft": "#242424",
       },
       fontFamily: {
-        sans: ["Open Sans", "sans-serif"],
+        sans: ["Segoe-UI-Regular", "sans-serif"],
+        "segoe-bold": ["Segoe-UI-Bold", "sans-serif"],
       },
     },
   },

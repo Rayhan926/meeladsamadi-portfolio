@@ -4,6 +4,25 @@ import SectionTitleSubtitle from "./SectionTitleSubtitle";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaMobileAlt } from "react-icons/fa";
 import Globe from "./Icons/Globe";
+import { Formik } from "formik";
+import FormikInput from "./FormikInput";
+import * as Yup from "yup";
+import FormikErrorMessage from "./FormikErrorMessage";
+import axios from "axios";
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label("Name"),
+  email: Yup.string().required().email().label("Email"),
+  phone: Yup.string().required().label("Phone"),
+  message: Yup.string().required().label("Message"),
+});
+
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
 
 const contactOptions = [
   {
@@ -24,7 +43,13 @@ const contactOptions = [
 
 const ContactSection = () => {
   return (
-    <section className="pt-[200px] pb-[60px]">
+    <section className="pt-[150px] pb-[60px] relative" id="hire-me">
+      <img
+        src="/img/Flower1.png"
+        alt="Flower"
+        className="w-[650px] absolute top-0 right-0 rotate-[90deg] translate-x-[10%] bottom-0 z-[-1]"
+      />
+
       <div className="container">
         <SectionTitleSubtitle
           title={"Contact Me"}
@@ -33,21 +58,60 @@ const ContactSection = () => {
 
         <div className="mt-20 grid-cols-1 grid lg:grid-cols-2 xl:grid-cols-[55%,auto] gap-y-14 gap-x-14">
           <div>
-            <form className="space-y-7">
-              <input type="text" className="__input" placeholder="Name" />
-              <input type="email" className="__input" placeholder="Email" />
-              <input type="text" className="__input" placeholder="Phone" />
-              <textarea
-                className="__input rounded-[25px] resize-none"
-                cols="30"
-                rows="5"
-                placeholder="Message"
-              ></textarea>
-
-              <div>
-                <Button>Message Me</Button>
-              </div>
-            </form>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={(values, actions) => {
+                axios
+                  .post("/api/contact", values)
+                  .then((res) => {
+                    actions.resetForm();
+                    console.log({ res });
+                  })
+                  .catch((err) => console.log(err))
+                  .finally(() => {
+                    actions.setSubmitting(false);
+                  });
+              }}
+            >
+              {({ handleSubmit, values, setFieldValue, isSubmitting }) => {
+                return (
+                  <form
+                    className="space-y-7"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSubmit();
+                    }}
+                  >
+                    <FormikInput type="text" placeholder="Name" name="name" />
+                    <FormikInput
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                    />
+                    <FormikInput type="text" placeholder="Phone" name="phone" />
+                    <div>
+                      <textarea
+                        value={values["message"]}
+                        onChange={(e) =>
+                          setFieldValue("message", e.target.value)
+                        }
+                        className="__input rounded-[25px] resize-none"
+                        cols="30"
+                        rows="5"
+                        placeholder="Message"
+                      ></textarea>
+                      <FormikErrorMessage name="message" />
+                    </div>
+                    <div>
+                      <Button>
+                        {isSubmitting ? "Sending.." : "Message Me"}
+                      </Button>
+                    </div>
+                  </form>
+                );
+              }}
+            </Formik>
           </div>
 
           <div className="rounded-md overflow-hidden h-full min-h-[450px]">

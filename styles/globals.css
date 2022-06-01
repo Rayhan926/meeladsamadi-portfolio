@@ -1,11 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
+@font-face {
+  font-family: "Segoe-UI-Regular";
+  src: url("/fonts/Segoe-UI-Regular");
+}
+@font-face {
+  font-family: "Segoe-UI-Bold";
+  src: url("/fonts/Segoe-UI-Bold");
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-black text-white;
+  @apply bg-black text-white max-w-[100vw] overflow-x-hidden;
+  overflow-y: overlay;
+}
+
+html {
+  @apply scroll-smooth;
 }
 
 @layer components {
