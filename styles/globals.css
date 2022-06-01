@@ -1,16 +1,42 @@
-html,
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply bg-black text-white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components {
+  .title_lg {
+    @apply text-[30px] leading-[45px] md:text-[55px] md:leading-[65px] font-medium text-white uppercase;
+  }
+  .title_md {
+    @apply text-[25px] leading-[35px] font-medium text-blue-600;
+  }
+  .title_sm {
+    @apply text-lg font-medium text-blue-600;
+  }
+  .text_lg {
+    @apply text-base md:text-xl font-normal text-gray-soft;
+  }
+  .text_md {
+    @apply text-base leading-[25px] font-medium text-gray-soft;
+  }
+  .text_sm {
+    @apply text-[14px] leading-[23px] font-normal text-gray-soft;
+  }
 
-* {
-  box-sizing: border-box;
+  .__input {
+    @apply rounded-full bg-dark-soft border border-dark-soft focus:border-white/10 outline-none py-3.5 px-8 text-white placeholder:text-gray-soft block w-full;
+  }
+
+  .container {
+    @apply mx-auto px-5 2xl:max-w-[1300px];
+  }
+
+  .card_shadow {
+    box-shadow: 0 4px 16px rgb(129, 129, 129, 0.07);
+  }
 }
