@@ -34,7 +34,7 @@ const Header = () => {
     <header className="lg:absolute top-0 left-0 w-full z-[5] pt-5">
       <div className="container flex justify-between items-center">
         <Link href="/">
-          <a className="text-[40px] font-bold italic leading-[32px]">
+          <a className="text-[28px] leading-[20px] lg:text-[40px] font-bold italic lg:leading-[32px]">
             <p>Mellad</p>
             <p className="mt-1.5 ml-2">Samadi</p>
           </a>
@@ -53,7 +53,7 @@ const Header = () => {
             style={{
               transitionProperty: "transform",
             }}
-            className={`flex flex-col items-start md:flex-row md:items-center text-lg gap-0 md:gap-10 font-medium bg-white border-r-4 border-primary md:bg-transparent w-[320px] h-full md:border-r-0 md:w-auto md:h-auto pt-6 md:pt-0
+            className={`flex flex-col items-start md:flex-row md:items-center text-lg gap-0 md:gap-10 font-medium bg-black border-r-4 border-primary md:bg-transparent w-[320px] h-full md:border-r-0 md:w-auto md:h-auto pt-6 md:pt-0
             ${isOpenMobileNav ? "translate-x-0 delay-100" : "-translate-x-full"}
             md:translate-x-0 duration-200
             `}
@@ -62,6 +62,7 @@ const Header = () => {
               <li key={i}>
                 <Link href={url}>
                   <a
+                    onClick={() => setIsOpenMobileNav(false)}
                     className={`
                     hover:text-primary duration-150 py-2.5 md:py-5 block px-6 md:px-0
                     text-gray-soft font-semibold

@@ -12,8 +12,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-black text-white max-w-[100vw] overflow-x-hidden;
+  @apply bg-black text-white;
   overflow-y: overlay;
+}
+#__next {
+  @apply w-[100vw] overflow-x-hidden;
 }
 
 html {
@@ -50,5 +53,45 @@ html {
 
   .card_shadow {
     box-shadow: 0 4px 16px rgb(129, 129, 129, 0.07);
+  }
+}
+
+.blend_arabic_text {
+  background: #fff;
+  color: transparent;
+  background-color: #fff;
+  /* background-image: radial-gradient(circle, #c058ff 0, #ff5858 26%, #000 27%); */
+  background-image: url("/img/blend.png");
+  background-position: 100% 80%;
+  background-size: cover;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+}
+
+._svg_spinner {
+  animation: rotate 2s linear infinite;
+}
+
+._svg_spinner .path {
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
   }
 }

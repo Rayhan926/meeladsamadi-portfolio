@@ -29,7 +29,7 @@ const servicesCards = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="pt-[100px] pb-[50px]">
+    <section id="services" className="pt-[70px] xl:pt-[100px] pb-[50px]">
       <SectionTitleSubtitle
         title={"My Services"}
         subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quasi tempore atque, natus ex ut voluptate eaque reiciendis sapiente! Eaque!"
